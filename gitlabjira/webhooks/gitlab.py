@@ -31,18 +31,19 @@ def merge_event_hook(webhook_data):
         comment = f'Closed in {commit_hash_link}'
     # if MR somebranch -> stage
     elif target_branch == Config.GITLAB_STAGE_BRANCH:
-        source_branch = 'JIRA-HEL-20'
         jira_issue_key = gl.jiraify_branch_name(source_branch)
         if not jira_issue_key:
-            return abort(403, f'Invalid issue key or target branch {target_branch}')
+            return abort(403, f'Invalid issue key or target branch {source_branch}')
         issue = jira_api.issue(jira_issue_key)
         issues.append(issue)
         comment = f'Fixed in {commit_hash_link}'
 
+    #@TODO Below steps may take time, so use celery instead
     transition_id = Config.JIRA_TRANSITIONS.get(target_branch)
     if int(transition_id) > 0 and len(issues) > 0:
         for issue in issues:
-            jira_api.transition_issue(issue, transition_id, comment=comment)
+            jira_api.transition_issue(issue, transition_id)
+            jira_api.add_comment(issue, comment)
 
     json_data = gl.get_json()
     return json_data

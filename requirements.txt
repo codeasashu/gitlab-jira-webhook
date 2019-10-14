@@ -1,7 +1,6 @@
 amqp==2.5.1
 asn1crypto==1.1.0
 billiard==3.6.1.0
-celery==4.3.0
 certifi==2019.9.11
 cffi==1.12.3
 chardet==3.0.4
