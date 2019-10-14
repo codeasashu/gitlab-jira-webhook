@@ -1,0 +1,15 @@
+# Gitlab Settings
+GITLAB_TOKEN=xyz
+
+# Jira Settings
+JIRA_USERNAME=email@domain.tld
+JIRA_TOKEN=jira_token
+JIRA_SITE=https://site.atlassian.net
+## Jira Issue settings
+TRANSITION_STAGE=11
+TRANSITION_MASTER=41
+
+# App Settings
+APP_ENV=dev
+HOST=0.0.0.0
+PORT=5000
