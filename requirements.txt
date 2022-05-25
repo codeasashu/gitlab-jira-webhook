@@ -21,7 +21,7 @@ oauthlib==3.1.0
 pbr==5.4.3
 prometheus-client==0.0.19
 pycparser==2.19
-PyJWT==1.7.1
+PyJWT==2.4.0
 python-dotenv==0.10.3
 python-gitlab==1.11.0
 pytz==2019.3
